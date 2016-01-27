@@ -1,13 +1,24 @@
 <ion-view view-title="Analysis">
   <ion-content>
-    <div class="card">
-      <div class="item item-divider">
-          A Distribution of When Events Happen
-      </div>
-      <div class="item item-text-wrap">
-          <canvas id="bar" class="chart chart-bar" data="data" labels="labels" legend="true" series="series" options="{showTooltips: false}"></canvas>
-      </div>
-    </div>
+    <ion-tabs class="tabs-positive tabs-icon-top">
+      <ion-tab title="When" icon="ion-calendar">
+        <ion-content>
+          <div class="card">
+            <div class="item item-divider">
+                A Distribution of When Events Happen
+            </div>
+            <div class="item item-text-wrap">
+                <canvas id="bar" class="chart chart-bar" data="data" labels="labels" legend="true" series="series" options="{showTooltips: false}"></canvas>
+            </div>
+          </div>
+        </ion-content>
+      </ion-tab>
+      <ion-tab title="Where" icon="ion-map">
+        <ion-content ng-init="initialize()" scroll="false">
+          <div id="map" data-tap-disabled="true"></div>
+        </ion-content>
+      </ion-tab>
+    </ion-tabs>
   </ion-content>
 </ion-view>
 

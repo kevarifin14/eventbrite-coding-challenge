@@ -16,7 +16,8 @@ angular.module(
     'eventbrite_events_service',
     'eventbrite_profile_service',
     'eventbrite_venue_service',
-    'ngResource'
+    'ngResource',
+    'ngCordova'
   ]
 )
 
