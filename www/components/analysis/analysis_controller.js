@@ -5,12 +5,14 @@ angular.module('analysis_controller', [])
   function(
     $cordovaGeolocation,
     $ionicLoading,
+    $ionicPopup,
     $scope,
     EventbriteEvents,
     EventbriteVenue
   ) {
     var locations = [];
     $ionicLoading.show();
+
     EventbriteEvents.get({
       'start_date.keyword': 'this_week'
     }).$promise.then(function(events) {
@@ -35,6 +37,11 @@ angular.module('analysis_controller', [])
       $scope.labels = ['Mon.', 'Tues.', 'Wed.', 'Thurs.', 'Fri.', 'Sat.', 'Sun.'];
       $scope.data = [values];
 
+      $ionicLoading.hide();
+    }, function(error) {
+      $ionicPopup.alert({
+        title: 'There was an error processing your request. We probably ran out of Eventbrite API calls :('
+      })
       $ionicLoading.hide();
     });
 

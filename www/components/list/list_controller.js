@@ -4,6 +4,7 @@ angular.module('list_controller', [])
   'ListController',
   function(
     $ionicLoading,
+    $ionicPopup,
     $scope,
     EventbriteEvents
   ) {
@@ -12,6 +13,11 @@ angular.module('list_controller', [])
     .$promise.then(function(events) {
       $scope.events = events.events;
       $ionicLoading.hide();
+    }, function(error) {
+      $ionicLoading.hide();
+      $ionicPopup.alert({
+        title: 'There was an error processing your request. We probably ran out of Eventbrite API calls :('
+      })
     });
 
     $scope.dividerFunction = function(key) {
