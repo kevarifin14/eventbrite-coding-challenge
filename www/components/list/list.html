@@ -1,0 +1,9 @@
+<ion-view view-title="Events List">
+  <ion-content>
+    <ion-list auto-list-divider ng-repeat="event in events">
+      <ion-item>
+        {{ event.name.text }}
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
