@@ -53,14 +53,16 @@ angular.module('analysis_controller', [])
       $scope.map = new google.maps.Map(document.getElementById('map'), mapOptions);
       $scope.map.setCenter(new google.maps.LatLng(41.850033, -87.6500523));
 
-      for (coordinates in locations) {
-        var latLng = new google.maps.LatLng(coordinates[0], coordinates[1]);
+      google.maps.event.addListenerOnce($scope.map, 'idle', function() {
+        for (coordinates in locations) {
+          var latLng = new google.maps.LatLng(coordinates[0], coordinates[1]);
 
-        var marker = new google.maps.Marker({
-          map: $scope.map,
-          animation: google.maps.Animation.DROP,
-          position: latLng
-        });
-      }
+          var marker = new google.maps.Marker({
+            map: $scope.map,
+            animation: google.maps.Animation.DROP,
+            position: latLng
+          });
+        }
+      });
     }
 });
